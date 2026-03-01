@@ -36,7 +36,7 @@ class MainIoContractTest {
             System.setIn(ByteArrayInputStream(input.toByteArray()))
             System.setOut(PrintStream(outBuffer))
 
-            assertDoesNotThrow({ main(arrayOf()) }, "main() must read from stdin; hardcoding input.txt should fail this test")
+            assertDoesNotThrow({ main(arrayOf()) }, "main() must read from stdin;")
 
             val output = outBuffer.toString()
 

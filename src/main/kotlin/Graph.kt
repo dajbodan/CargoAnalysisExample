@@ -12,4 +12,5 @@ data class Node(
 data class Graph (
     val vertices: List<Node>,
     val edges: Map<Node, List<Node>>
+
 )
