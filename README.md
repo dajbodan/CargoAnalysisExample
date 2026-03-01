@@ -15,12 +15,16 @@ The solution uses a monotone data-flow analysis with a worklist:
 
 Cycles and returning to the start station are handled naturally by the iteration.
 
-## Complexity
+## Complexity of CargoReachabilityAnalysis
 
 Let `V` be the number of stations, `E` the number of tracks, and `C` the number of cargo types.
 
-- Time: `O(E · C)`
-- Space: `O(V · C)`
+- Time: `O(E · C^2)`,
+  - because merging predecessor costs $deg_in(v) * C \leq |E|*C$ for some vertex v that we're computing.
+  - And it is possible in algorithm to visit one vertex $v$. Let's call $#updates(v)$, how many times we visit $v$ during the exection.
+  - Each time we visit $v$, we should gain new cargo. Otherwise, we don't visit $v$. Therefore number of updates is at most |C|
+  - In total we have. $\sum_{v \in V} ( #updates(v) * deg_in(v) * C) \leq \sum_{v \in V} ( #updates(v) * |E| * C) \leq \sum_v ( |E| * C^2) = \mathcal{O}(|V| * |E| * |C|^2)$
+- Space: `O(V · C)`, because for each vertex we store cargos
 
 ## Input
 
