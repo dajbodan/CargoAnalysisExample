@@ -25,7 +25,7 @@ Let `V` be the number of stations, `E` the number of tracks, and `C` the number 
 
 **Explanation:**
 - For each vertex `v`, we maintain a set of cargo types that may be present on arrival.
-- The analysis is monotone: cargo types are only added, never removed. And when it is added for some vertex, we push that vertex in a queue, so we can visit it later.
+- The analysis is monotone: cargo types are only added, never removed. And when it is added for some vertex, we push that vertex in a queue so that we can visit it later.
 - Therefore, number of `updates(v)` is at most C, where `updates(v)` means how many times we visited vertex `v` during the execution.
 - Processing a vertex `v` requires merging information from all incoming edges, which costs `O(deg_in(v) · C)`.
 
