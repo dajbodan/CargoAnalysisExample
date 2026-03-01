@@ -13,7 +13,6 @@ The solution uses a monotone data-flow analysis with a worklist:
 - propagate state only from already discovered (reachable) predecessors. Unreachable stations remain with empty arrival set and are printed as empty.
 - sets of possible cargo types grow monotonically until a fixpoint is reached
 
-Cycles and returning to the start station are handled naturally by the iteration.
 
 ## Complexity of CargoReachabilityAnalysis
 
