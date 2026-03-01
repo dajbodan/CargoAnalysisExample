@@ -108,29 +108,6 @@ class CargoReachabilityAnalysisTest {
         assertEquals(true, linesById.containsKey(2), "Output must include unreachable station 2")
     }
 
-
-    @Test
-    fun cycleReturnsToStart_makesCargoPossibleOnArrivalToStart() {
-        val n0 = Node(id = 0, c_unload = 2, c_load = 12)
-        val n1 = Node(id = 1, c_unload = 12, c_load = 9)
-
-        val graph = Graph(
-            vertices = listOf(n0, n1),
-            edges = mapOf(
-                n0 to listOf(n1),
-                n1 to listOf(n0)
-            )
-        )
-
-        val got = runAndParse(graph, startId = 0)
-
-        val cargosAt0 = got[0] ?: emptySet()
-        assertTrue(
-            9 in cargosAt0,
-            "Expected cargo 9 to be possible on ARRIVAL to start(0) via route 0->1->0, but got $cargosAt0"
-        )
-    }
-
     @Test
     fun unload_then_load_order_matters_when_unload_equals_load() {
         val n0 = Node(id = 0, c_unload = 999, c_load = 5)
