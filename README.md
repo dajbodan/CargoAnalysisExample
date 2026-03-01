@@ -28,7 +28,7 @@ Let `V` be the number of stations, `E` the number of tracks, and `C` the number 
 - Therefore, number of `updates(v)` is at most C, where `updates(v)` means how many times we visited vertex `v` during the execution.
 - Processing a vertex `v` requires merging information from all incoming edges, which costs `O(deg_in(v) · C)`.
 
-The total running time is therefore bounded by: Σ over v ∈ V (updates(v) · deg_in(v) · C). And since `updates(v) ≤ C` and `Σ deg_in(v) = E`, the total time complexity is: O(E · C²)
+The total running time is therefore bounded by: `Σ over v ∈ V (updates(v) · deg_in(v) · C)`. And since `updates(v) ≤ C` and `Σ deg_in(v) = E`, the total time complexity is: `O(E · C²)`
 ### Space
 
 - **Space:** `O(V · C)`
