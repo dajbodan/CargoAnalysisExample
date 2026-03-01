@@ -19,12 +19,24 @@ Cycles and returning to the start station are handled naturally by the iteration
 
 Let `V` be the number of stations, `E` the number of tracks, and `C` the number of cargo types.
 
-- Time: `O(E · C^2)`,
-  - because merging predecessor costs $deg_{in}(v) * C$ for some vertex v that we're computing.
-  - And it is possible in algorithm to visit one vertex $v$. Let's call $updates(v)$, how many times we visit v during the exection.
-  - Each time we visit v, we should gain new cargo. Otherwise, we don't visit v. Therefore number of updates is at most |C|
-  - In total, we are iterating for each vertex $Σ(updates(v) * deg_{in}(v) * C) <= Σ(|C| * deg_{in}(v) * C) <= Σ( |E| * C^2) = O(|E| * |C|^2)$
-- Space: `O(V · C)`, because for each vertex we store cargos
+### Time
+
+- **Time:** `O(E · C²)` (worst case)
+
+**Explanation:**
+- For each vertex `v`, we maintain a set of cargo types that may be present on arrival.
+- The analysis is monotone: cargo types are only added, never removed.
+- Each cargo type can be added to a vertex at most once, so the number of meaningful updates of a vertex `v` is at most `C`.
+- Processing a vertex `v` requires merging information from all incoming edges, which costs `O(deg_in(v) · C)`.
+
+The total running time is therefore bounded by: Σ over v ∈ V (updates(v) · deg_in(v) · C). And since `updates(v) ≤ C` and `Σ deg_in(v) = E`, the total time complexity is: O(E · C²)
+### Space
+
+- **Space:** `O(V · C)`
+
+**Explanation:**
+- For each vertex, we store the set of cargo types that may be present on arrival.
+- In the worst case, each vertex may store all `C` cargo types.
 
 ## Input
 
