@@ -28,4 +28,14 @@ class Controller(){
                 res.append('\n')
             }
     }
+
+    fun printGraph(graph: Graph) : String
+    {
+        var res = "\nvertices and corresponding cargo (<unload>, <load>):\n"
+        graph.vertices.forEach { v -> res += v.id.toString() + " ("+ v.c_unload.toString() +"," + v.c_load.toString() + ")" +"; " }
+        res += "\nedges: "
+        graph.edges.forEach { u -> u.value.forEach { v ->  res += "{" + u.key.id.toString() + "," + v.id.toString() + "}; " }}
+
+        return res
+    }
 }
