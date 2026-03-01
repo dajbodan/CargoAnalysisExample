@@ -10,11 +10,11 @@ private fun chooseInput(): InputStream {
     println("2 — read from file path")
     print("> ")
 
-    return when (readLine()?.trim()) {
+    return when (readlnOrNull()?.trim()) {
         "1" -> System.`in`
         "2" -> {
             print("Enter path: ")
-            FileInputStream(readLine()!!.trim())
+            FileInputStream(readln().trim())
         }
         else -> error("Invalid choice")
     }
