@@ -49,5 +49,4 @@ s0
 
 ## Notes
 
-- Cargo types are abstract labels; quantity does not matter.
 - Unreachable stations are reported with an empty set.
