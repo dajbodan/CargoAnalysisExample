@@ -10,7 +10,7 @@ Starting from a given station with empty cargo, the goal is to determine which c
 
 The solution uses a monotone data-flow analysis with a worklist:
 - for each station, we track the set of possible cargo types on arrival
-- cargo is propagated along edges using the rule: unload first, then load
+- propagate state only from already discovered (reachable) predecessors. Unreachable stations remain with empty arrival set and are printed as empty.
 - sets grow monotonically until a fixpoint is reached
 
 Cycles and returning to the start station are handled naturally by the iteration.
