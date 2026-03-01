@@ -46,7 +46,3 @@ s c_unload c_load      (S lines)
 s_from s_to            (T lines)
 s0
 ```
-
-## Notes
-
-- Unreachable stations are reported with an empty set.
